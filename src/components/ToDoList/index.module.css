@@ -1,0 +1,25 @@
+.content_container{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding: 16px;
+    gap: 12px;
+    width: 736px;
+    height: auto;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.06);
+    border-radius: 8px;
+}
+
+.text{
+    color: var(--gray-100);
+    min-width: 632px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.img{
+
+}
