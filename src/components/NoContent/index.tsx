@@ -5,7 +5,7 @@ export const NoContent = () =>{
         <section className={styles.section_container}>
             <img src={clipboard} alt="icone de tarefa"/>
             <p className={styles.text}>Você ainda não tem tarefas cadastradas,
-                <strong> Crie tarefas se organize seus itens a fazer</strong>
+                <strong> Crie tarefas organize seus itens a fazer</strong>
             </p>
         </section>
     )
