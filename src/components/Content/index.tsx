@@ -22,14 +22,24 @@ export const Content = () =>{
             description,
             isDone: false,
         }
-        setTaksList((currentValue)=>[...currentValue, newTask]);
+        api.post("tasks", newTask)
+           .then((response)=> setTaksList((currentValue)=>[...currentValue, response.data]));
         setDescription('',);
     }
 
     const removeTaskOnList = (id: string)=>{
-        setTaksList((currentValue) => currentValue.filter(task => task.id !== id))
+        api.delete(`tasks/${id}`)
+            .then(()=> setTaksList((currentValue) => currentValue.filter(task => task.id !== id)));
+        //setTaksList((currentValue) => currentValue.filter(task => task.id !== id))
     }
     const changeStatusCheckbox = (id: string)=>{
+
+        const task = tasksList.find(task => task.id ==id);
+        if (task){
+            api.patch(`tasks/${id}`, {
+                isDone: !task.isDone
+            })
+        }
         const xebas = tasksList.map((Task) =>{
             if (Task.id == id){
                 return{
