@@ -1,23 +1,23 @@
 import trash from '../../assets/trash.svg'
 import styles from './index.module.css'
-import {Task} from "../../Model/Task.ts";
+import {useToDoContext} from "../../hooks/UseToDoContext";
 
-interface TodoList {
-    list: Task[];
+interface TodoListProps {
     onDelete: (id: string)=> void;
     onChangeCheckBox:(id: string) => void;
 }
-export const ToDoList = ({list, onDelete, onChangeCheckBox}: TodoList) =>{
+export const ToDoList = ({onDelete, onChangeCheckBox}: TodoListProps) =>{
+    const { taskListState } = useToDoContext();
     return(
         <section className={styles.section_container}>
-            {list.map((Task)=>(
-                <article key={Task.id} className={styles.content_container}>
+            {taskListState.map((task)=>(
+                <article key={task.id} className={styles.content_container}>
                     <input type="checkbox"
-                           id={Task.id}
-                           onChange={()=> onChangeCheckBox(Task.id)}
-                           defaultChecked={Task.isDone}/>
-                    <p className={Task.isDone ? styles.text_scratched : styles.text}>{Task.description}</p>
-                    <img className={styles.img} src={trash} alt="icone de lixeira" onClick={()=> onDelete(Task.id)}/>
+                           id={task.id}
+                           onChange={()=> onChangeCheckBox(task.id)}
+                           defaultChecked={task.isDone}/>
+                    <p className={task.isDone ? styles.text_scratched : styles.text}>{task.description}</p>
+                    <img className={styles.img} src={trash} alt="icone de lixeira" onClick={()=> onDelete(task.id)}/>
                 </article>
             ))}
         </section>

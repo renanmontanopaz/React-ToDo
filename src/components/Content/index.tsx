@@ -6,15 +6,12 @@ import ToDoList from "../ToDoList";
 import {Task} from "../../Model/Task.ts";
 import { v4 as uuidv4 } from 'uuid';
 import {api} from '../../configs/api';
+import useToDoContext from "../../hooks/UseToDoContext";
 export const Content = () =>{
 
 
     const [description, setDescription] = useState<string>("");
-
-    const [tasksList, setTaksList] = useState<Task[]>([
-
-    ]);
-
+    const {taskListState, setTaskListState} = useToDoContext();
     const disabledButton = !description.length;
     const addTaskOnList = ()=>{
         const newTask = {
@@ -23,41 +20,40 @@ export const Content = () =>{
             isDone: false,
         }
         api.post("tasks", newTask)
-           .then((response)=> setTaksList((currentValue)=>[...currentValue, response.data]));
-        setDescription('',);
+           .then((response)=> setTaskListState((currentValue)=>[...currentValue, response.data]))
+            .finally(()=> setDescription('',));
     }
 
     const removeTaskOnList = (id: string)=>{
         api.delete(`tasks/${id}`)
-            .then(()=> setTaksList((currentValue) => currentValue.filter(task => task.id !== id)));
-        //setTaksList((currentValue) => currentValue.filter(task => task.id !== id))
+            .then(()=> setTaskListState((task) => task.filter(task => task.id !== id)));
     }
     const changeStatusCheckbox = (id: string)=>{
 
-        const task = tasksList.find(task => task.id ==id);
+        const task = taskListState.find(task => task.id ==id);
         if (task){
             api.patch(`tasks/${id}`, {
                 isDone: !task.isDone
             })
         }
-        const xebas = tasksList.map((Task) =>{
-            if (Task.id == id){
+        const xebas = taskListState.map((task) =>{
+            if (task.id == id){
                 return{
-                    ...Task,
-                    isDone : !Task.isDone
+                    ...task,
+                    isDone : !task.isDone
                 }
             }
-            return Task
+            return task
         })
-        setTaksList(xebas)
+        setTaskListState(xebas)
     }
 
-    const tasksDone = tasksList.filter((Task)=> {
-        return Task.isDone !== false;
+    const tasksDone = taskListState.filter((task)=> {
+        return task.isDone !== false;
     })
 
     useEffect(()=> {
-        api.get("tasks").then((response) => setTaksList(response.data as Task[]))
+        api.get("tasks").then((response) => setTaskListState(response.data as Task[]))
     }, []);
 
     return(
@@ -78,14 +74,14 @@ export const Content = () =>{
                 <article className={styles.content_header}>
                     <article className={styles.tasks_container}>
                         <p className={styles.taks_created}>Tarefas Criadas</p>
-                        <span className={styles.span_value}>{tasksList.length}</span>
+                        <span className={styles.span_value}>{taskListState.length}</span>
                     </article>
                     <article className={styles.tasks_container}>
                         <p className={styles.tasks_done}>Concluídas</p>
-                        <span className={styles.span_value}>{tasksDone.length} de {tasksList.length}</span>
+                        <span className={styles.span_value}>{tasksDone.length} de {taskListState.length}</span>
                     </article>
                 </article>
-                {tasksList.length === 0? <NoContent/> : <ToDoList onDelete={removeTaskOnList} onChangeCheckBox={changeStatusCheckbox} list={tasksList}/> }
+                {taskListState.length === 0? <NoContent/> : <ToDoList onDelete={removeTaskOnList} onChangeCheckBox={changeStatusCheckbox} /> }
             </main>
         </section>
     )
