@@ -7,11 +7,13 @@ import {Task} from "../../Model/Task.ts";
 import { v4 as uuidv4 } from 'uuid';
 import {api} from '../../configs/api';
 import useToDoContext from "../../hooks/UseToDoContext";
+import {useToast} from "../../hooks/UseToast";
 export const Content = () =>{
 
 
     const [description, setDescription] = useState<string>("");
     const {taskListState, setTaskListState} = useToDoContext();
+    const {showToast} = useToast();
     const disabledButton = !description.length;
     const addTaskOnList = ()=>{
         const newTask = {
@@ -21,7 +23,13 @@ export const Content = () =>{
         }
         api.post("tasks", newTask)
            .then((response)=> setTaskListState((currentValue)=>[...currentValue, response.data]))
-            .finally(()=> setDescription('',));
+            .finally(()=> {
+                setDescription('')
+                showToast({
+                    message: "Tarefa adicionada com sucesso",
+                    type: 'success'
+                })
+            });
     }
 
     const removeTaskOnList = (id: string)=>{
