@@ -3,23 +3,24 @@
     min-height: calc(100vh - 200px);
     padding-bottom: 30px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-
+    flex-direction: column;
 
 }
 
 .input_container{
     display: flex;
     gap: 8px;
-
-    margin-top: -30px;
+    max-width: 776px;
+    width: 90%;
+    margin-top: -100px;
 }
 
 .input{
-    width: 638px;
+    width: 676px;
     height: 54px;
-
+    max-width: 100%;
     color: var(--gray-300);
     background: var(--gray-500);
     border: 1px solid var(--gray-700);
@@ -63,6 +64,8 @@
     justify-content: space-between;
     color: white;
     margin: 64px 0 24px;
+    max-width: 776px;
+    width: 90%;
 }
 
 .tasks_container{

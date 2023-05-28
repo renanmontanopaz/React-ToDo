@@ -7,11 +7,13 @@ import {Task} from "../../Model/Task.ts";
 import { v4 as uuidv4 } from 'uuid';
 import {api} from '../../configs/api';
 import useToDoContext from "../../hooks/UseToDoContext";
+import {useToast} from "../../hooks/UseToast";
 export const Content = () =>{
 
 
     const [description, setDescription] = useState<string>("");
     const {taskListState, setTaskListState} = useToDoContext();
+    const {showToast} = useToast();
     const disabledButton = !description.length;
     const addTaskOnList = ()=>{
         const newTask = {
@@ -21,12 +23,22 @@ export const Content = () =>{
         }
         api.post("tasks", newTask)
            .then((response)=> setTaskListState((currentValue)=>[...currentValue, response.data]))
-            .finally(()=> setDescription('',));
+            .finally(()=> {
+                setDescription('')
+                showToast({
+                    message: "Tarefa adicionada com sucesso",
+                    type: 'success'
+                })
+            });
     }
 
     const removeTaskOnList = (id: string)=>{
         api.delete(`tasks/${id}`)
             .then(()=> setTaskListState((task) => task.filter(task => task.id !== id)));
+            showToast({
+                message: "Tarefa removida com sucesso",
+                type: 'danger'
+            })
     }
     const changeStatusCheckbox = (id: string)=>{
 
@@ -58,7 +70,7 @@ export const Content = () =>{
 
     return(
         <section className={styles.section_container}>
-            <main>
+
                 <article className={styles.input_container}>
                     <input className={styles.input}
                            type="text" placeholder="Adicione uma nova tarefa"
@@ -82,7 +94,7 @@ export const Content = () =>{
                     </article>
                 </article>
                 {taskListState.length === 0? <NoContent/> : <ToDoList onDelete={removeTaskOnList} onChangeCheckBox={changeStatusCheckbox} /> }
-            </main>
+
         </section>
     )
 }
