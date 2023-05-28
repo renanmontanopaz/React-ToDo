@@ -20,13 +20,11 @@
     border: 1px solid var(--gray-400);
     box-shadow: 0px 2px 8px rgba(0,0,0,0.06);
     border-radius: 8px;
-    word-wrap: break-word;
 }
 
 .text{
     color: var(--gray-100);
     width: 776px;
-    max-width: 87%;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -42,12 +40,13 @@ p{
     color: var(--gray-300);
     text-decoration: line-through;
     width: 776px;
-    max-width: 87%;
     font-size: 14px;
+    align-items: baseline;
+
 }
 input[type="checkbox"] {
     appearance: none;
-
+    margin-left: 20px;
     font: inherit;
     color: var(--blue-dark);
     width: 19px;
@@ -55,7 +54,7 @@ input[type="checkbox"] {
     border: 2px solid var(--blue-dark);
     border-radius: 16px;
     transform: translateY(0.415em);
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -99,6 +98,7 @@ input[type="checkbox"]:hover{
     width: auto;
     height: 14px;
     padding: 6px;
+    margin-right: 18px;
 }
 
 .img:hover{
