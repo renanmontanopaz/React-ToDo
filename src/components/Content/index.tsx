@@ -35,6 +35,10 @@ export const Content = () =>{
     const removeTaskOnList = (id: string)=>{
         api.delete(`tasks/${id}`)
             .then(()=> setTaskListState((task) => task.filter(task => task.id !== id)));
+            showToast({
+                message: "Tarefa removida com sucesso",
+                type: 'danger'
+            })
     }
     const changeStatusCheckbox = (id: string)=>{
 
