@@ -9,7 +9,7 @@ interface TodoListProps {
 export const ToDoList = ({onDelete, onChangeCheckBox}: TodoListProps) =>{
     const { taskListState } = useToDoContext();
     return(
-        <section className={styles.section_container}>
+        <div className={styles.section_container}>
             {taskListState.map((task)=>(
                 <article key={task.id} className={styles.content_container}>
                     <input type="checkbox"
@@ -20,7 +20,7 @@ export const ToDoList = ({onDelete, onChangeCheckBox}: TodoListProps) =>{
                     <img className={styles.img} src={trash} alt="icone de lixeira" onClick={()=> onDelete(task.id)}/>
                 </article>
             ))}
-        </section>
+        </div>
     )
 }
 

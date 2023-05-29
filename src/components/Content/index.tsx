@@ -68,20 +68,20 @@ export const Content = () =>{
     }, []);
 
     return(
+
         <section className={styles.section_container}>
-
-                <article className={styles.input_container}>
-                    <input className={styles.input}
-                           type="text" placeholder="Adicione uma nova tarefa"
-                           onChange={(event: ChangeEvent<HTMLInputElement>)=> setDescription(event.target.value)}
-                           value={description}/>
-                    <button className={styles.button}
-                            onClick={addTaskOnList}
-                            disabled={disabledButton}>Criar
-                        <img src={Plus} alt="icone de mais"/>
-                    </button>
-
-                </article>
+            <main>
+            <article className={styles.input_container}>
+                <input className={styles.input}
+                       type="text" placeholder="Adicione uma nova tarefa"
+                       onChange={(event: ChangeEvent<HTMLInputElement>)=> setDescription(event.target.value)}
+                       value={description}/>
+                <button className={styles.button}
+                        onClick={addTaskOnList}
+                        disabled={disabledButton}>Criar
+                    <img src={Plus} alt="icone de mais"/>
+                </button>
+            </article>
                 <article className={styles.content_header}>
                     <article className={styles.tasks_container}>
                         <p className={styles.taks_created}>Tarefas Criadas</p>
@@ -93,7 +93,7 @@ export const Content = () =>{
                     </article>
                 </article>
                 {taskListState.length === 0? <NoContent/> : <ToDoList onDelete={removeTaskOnList} onChangeCheckBox={changeStatusCheckbox} /> }
-
+            </main>
         </section>
     )
 }
