@@ -69,7 +69,8 @@ export const Content = () =>{
 
     return(
 
-        <div className={styles.section_container}>
+        <section className={styles.section_container}>
+            <main>
             <article className={styles.input_container}>
                 <input className={styles.input}
                        type="text" placeholder="Adicione uma nova tarefa"
@@ -92,6 +93,7 @@ export const Content = () =>{
                     </article>
                 </article>
                 {taskListState.length === 0? <NoContent/> : <ToDoList onDelete={removeTaskOnList} onChangeCheckBox={changeStatusCheckbox} /> }
-        </div>
+            </main>
+        </section>
     )
 }
