@@ -1,20 +1,23 @@
 .section_container{
     background: var(--gray-600);
     min-height: calc(100vh - 200px);
-    padding-bottom: 30px;
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    width: 100%;
 }
+
+
 
 .input_container{
     display: flex;
     gap: 8px;
     max-width: 776px;
     width: 90%;
-    margin-top: -100px;
+    margin-top: -27px;
+    position: relative;
 }
 
 .input{
@@ -63,7 +66,8 @@
     display: flex;
     justify-content: space-between;
     color: white;
-    margin: 64px 0 24px;
+    position: absolute;
+    margin-top: -564px;
     max-width: 776px;
     width: 90%;
 }
@@ -72,7 +76,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
+    position: relative;
+    margin-top: -90px;
 }
 
 .taks_created{
