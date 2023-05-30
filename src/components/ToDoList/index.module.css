@@ -10,11 +10,8 @@
 .content_container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    //padding: 16px;
     gap: 12px;
     width: 776px;
-    //width: 744px;
     max-width: 100%;
     max-height: none;
     height: 74px;
@@ -108,4 +105,5 @@ input[type="checkbox"]:hover{
     cursor: pointer;
     background-color: var(--gray-400);
     border-radius: 4px;
+
 }
