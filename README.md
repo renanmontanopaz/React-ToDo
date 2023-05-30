@@ -21,26 +21,26 @@ A aplicação consiste em uma Home e uma lista de tarefas, onde é possível adi
 
 # Tecnologias utilizadas
 Front end
-HTML / CSS / TypeScript
-ReactJS
-VITE
-Front end web: Netlify
-Back end Api: render.com
+HTML / CSS / TypeScript<br/>
+ReactJS<br/>
+VITE<br/>
+Front end web: Netlify<br/>
+Back end Api: render.com<br/>
 
-# clonar repositório
-git clone https://github.com/renanmontanopaz/React-ToDo
- # executar o projeto
-Front end web 
-Pré-requisitos: npm / yarn 
+# clonar repositório<br/>
+git clone https://github.com/renanmontanopaz/React-ToDo<br/>
+ # executar o projeto<br/>
+Front end web <br/>
+Pré-requisitos: npm / yarn <br/>
 
- # entrar na pasta do projeto front end web
- # instalar dependências
-yarn install | npm run install
- # executar o projeto
-npm run dev
+ # entrar na pasta do projeto front end web<br/>
+ # instalar dependências<br/>
+yarn install | npm run install<br/>
+ # executar o projeto<br/>
+npm run dev<br/>
 
 # Autor 
-Renan Montano Paz
+Renan Montano Paz<br/>
 https://www.linkedin.com/in/renan-montano-paz-b0109855/
 ## Disponível nas plataformas
 
