@@ -6,6 +6,10 @@
     height: 244px;
     border-top: 1px solid var(--gray-400);
     border-radius: 8px;
+    max-width: 776px;
+    width: 100%;
+    margin-top: 130px;
+    min-height: 62.5vh;
 }
 
 .text{
