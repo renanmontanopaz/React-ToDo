@@ -1,19 +1,14 @@
-import {Header} from "./components/Header";
-import {Content} from "./components/Content";
-import {ToDoContextProvider} from "./contexts/ToDo"
-import {ToastProvider} from "./contexts/Toast";
+import {Outlet} from "react-router-dom";
+
 function App() {
 
-  return (
-    <>
-      <Header/>
-      <ToastProvider>
-        <ToDoContextProvider>
-        <Content/>
-        </ToDoContextProvider>
-      </ToastProvider>
-    </>
-  )
+
+    return (
+        <>
+            <Outlet/>
+        </>
+    )
 }
 
 export default App
+
