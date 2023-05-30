@@ -6,9 +6,9 @@
 
 # Tela Mobile
 <br/>
-<div style="flex-direction: row; display: flex">
-    <img src="./src/assets/img_3.png" style="width: 50%">
-    <img src="./src/assets/img_5.png" style="width: 50%">
+<div style="flex-direction: row; display: flex; justify-content: center; align-items: center;">
+    <img src="./src/assets/img_3.png" style="width: 40%">
+    <img src="./src/assets/img_5.png" style="width: 40%">
 </div>
 <br/>
 
